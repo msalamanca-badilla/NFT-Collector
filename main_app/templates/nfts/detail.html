@@ -15,5 +15,21 @@
     <a href="{% url 'nfts_delete' nft.id %}">Delete</a>
   </div>
 </div>
-
+</div>
+<div class="col s6">
+  <table class="striped">
+    <thead>
+      <tr><th>Date</th><th>Selling</th></tr>
+    </thead>
+    <tbody>
+      {% for selling in nft.selling_set.all %}
+        <tr>
+          <td>{{selling.date}}</td>
+          <td>{{selling.get_sell_display}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 {% endblock %}
