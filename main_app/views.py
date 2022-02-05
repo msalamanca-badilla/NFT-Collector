@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Nft
 # Define the home view
 
@@ -20,3 +20,11 @@ def nfts_detail(request, nft_id):
 class NftCreate(CreateView):
   model = Nft
   fields = '__all__'
+
+class NftUpdate(UpdateView):
+  model = Nft
+  fields = ['owner']
+
+class NftDelete(DeleteView):
+  model=Nft
+  success_url='/nfts'
