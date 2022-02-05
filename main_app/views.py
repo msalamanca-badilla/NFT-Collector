@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Nft
 # Define the home view
 
@@ -15,3 +16,7 @@ def nfts_index(request):
 def nfts_detail(request, nft_id):
   nft = Nft.objects.get(id=nft_id)
   return render(request, 'nfts/detail.html', { 'nft': nft })
+
+class NftCreate(CreateView):
+  model = Nft
+  fields = '__all__'
