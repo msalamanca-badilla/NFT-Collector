@@ -21,7 +21,7 @@ class Nft(models.Model):
         return reverse('detail', kwargs = {'nft_id': self.id})
 
 class Selling(models.Model):
-    date = models.DateField('Selling Date')
+    date = models.DateField('Selling/Sold Date')
     sell = models.CharField(
         max_length=1,
         choices=SELL,
@@ -32,3 +32,6 @@ class Selling(models.Model):
 
     def __str__(self):
         return f"{self.get_sell_display()} on {self.date}"
+    
+    class Meta:
+        ordering = ['-date']

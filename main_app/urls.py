@@ -15,4 +15,5 @@ urlpatterns = [
 
     #Delete
     path('nfts/<int:pk>/delete/',views.NftDelete.as_view(),name='nfts_delete'),
+    path('nfts/<int:nft_id>/add_selling/', views.add_selling, name='add_selling'),
 ]

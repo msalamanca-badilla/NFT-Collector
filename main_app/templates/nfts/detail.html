@@ -17,6 +17,11 @@
 </div>
 </div>
 <div class="col s6">
+  <form action="{% url 'add_selling' nft.id %}" method="post">
+    {% csrf_token %}
+    {{ selling_form.as_p }}
+    <input type="submit" class="btn" value="SELL">
+  </form>
   <table class="striped">
     <thead>
       <tr><th>Date</th><th>Selling</th></tr>
@@ -32,4 +37,15 @@
   </table>
 </div>
 </div>
+<script>
+  var dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+  var selectEl = document.getElementById('id_sell');
+  M.FormSelect.init(selectEl);
+</script>
 {% endblock %}
